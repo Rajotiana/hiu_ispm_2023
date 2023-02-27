@@ -9,6 +9,7 @@ import Home from "../pages/Home";
 import StudentsSpaceSidebar from "../layout/StudentSpaceSidebar";
 import Orientation from "../pages/Orientation";
 import User from "../pages/student/User";
+import Admin from "../pages/admin";
 
 const router = createBrowserRouter([
   {
@@ -41,11 +42,18 @@ const router = createBrowserRouter([
         ),
       },
       {
-        index: true,
         path: "/orientation",
         element: (
           <PublicRoute>
             <Orientation />
+          </PublicRoute>
+        ),
+      },
+      {
+        path: "/admin",
+        element: (
+          <PublicRoute>
+            <Admin />
           </PublicRoute>
         ),
       },
@@ -58,16 +66,16 @@ const router = createBrowserRouter([
         <StudentsSpaceSidebar />
       </PublicRoute>
     ),
-    children:[
+    children: [
       {
-        path:'course',
+        path: "course",
         element: (
           <PublicRoute>
             <User />
           </PublicRoute>
-        )
-      }
-    ]
+        ),
+      },
+    ],
   },
 ]);
 

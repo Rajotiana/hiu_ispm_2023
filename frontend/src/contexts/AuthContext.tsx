@@ -7,7 +7,7 @@ export interface IUser {
 
 export const AuthContext = createContext<{
   user: null | IUser;
-  login: (email: string) => void;
+  login: (email: string, password: string) => void;
   logout: () => void;
 }>({
   user: null,
@@ -18,8 +18,11 @@ export const AuthContext = createContext<{
 const AuthProvider = ({ children }: PropsWithChildren<any>) => {
   const [user, setUser] = useState<null | IUser>(null);
 
-  const login = (email: string) => {
-    console.log(login);
+  const login = (email: string, password: string) => {
+    console.log({
+      email,
+      password,
+    });
     setUser({
       id: "a",
       email: email,

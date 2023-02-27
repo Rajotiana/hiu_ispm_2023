@@ -10,8 +10,11 @@ interface IExam {
 const ExamSchema = new Schema<IExam>({
   code: String,
   name: String,
-  start_date: Date,
-  end_date: Date,
+  start_date: {
+    type: Date,
+    default: new Date(),
+  },
+  end_date: { type: Date, default: new Date() },
 });
 
 const ExamModel = model("Exam", ExamSchema);

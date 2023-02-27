@@ -1,16 +1,14 @@
-import { Schema, model } from "mongoose";
+import { Schema, SchemaTypes, model } from "mongoose";
 
 interface IOrientation {
-  question: number;
-  value: number;
+  values: {
+    question: number;
+    value: number;
+  }[];
 }
 
 const OrientationSchema = new Schema<IOrientation>({
-  question: Number,
-  value: {
-    type: Number,
-    default: 0,
-  },
+  values: SchemaTypes.Mixed,
 });
 
 const OrientationModel = model("Orientation", OrientationSchema);
