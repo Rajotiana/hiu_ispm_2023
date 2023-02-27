@@ -10,6 +10,7 @@ export const getExams: RequestHandler<
             name: string;
             start_date: Date;
             end_date: Date;
+            code: string;
         }[];
     },
     void
@@ -22,7 +23,8 @@ export const getExams: RequestHandler<
                 id: e.id,
                 name: e.name,
                 end_date: e.end_date,
-                start_date: e.start_date
+                start_date: e.start_date,
+                code: e.code
             }))
         })
     }
@@ -36,6 +38,7 @@ export const createExam: RequestHandler<void, void, {
     name: string;
     start_date: Date;
     end_date: Date;
+    code: string;
 }> = async (req, res) => {
     try {
         const exam = req.body
@@ -43,7 +46,8 @@ export const createExam: RequestHandler<void, void, {
         await new ExamModel({
             name: exam.name,
             start_date: exam.start_date,
-            end_date: exam.end_date
+            end_date: exam.end_date,
+            code: exam.code
         })
     }
     catch (error: any) {
