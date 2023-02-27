@@ -2,6 +2,7 @@ import { Button, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } f
 import React, { useState } from "react";
 import Question from "../sections/orientation/Question";
 import BasicModal from "../components/BasicModal";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -101,7 +102,15 @@ const Orientation = (props: Props) => {
               </div>
             </div>
           ) : (
-            <div className="p-2">We recommend you the field {bestField}</div>
+            <div className="mt-10 p-2 flex items-center justify-center">
+              <div className="card p-32 border rounded-lg text-center shadow-lg">
+                <div className="">
+                Based on your responses to our questions, we suggest that the field of <span className="text-blue-600">{bestField}</span> may be a good fit for your skills and interests.
+
+                </div>
+                <Link className='text-blue-600' to='/register'>Register</Link>
+              </div>
+            </div>
           )}
         </div>
       )}
