@@ -1,15 +1,15 @@
 import { ObjectId, Schema, Types, model } from "mongoose";
 
 interface IGrade {
-  student_id: ObjectId;
-  exam_id: ObjectId;
+  student_id: string;
+  exam_id: string;
   subject: string;
   score: number;
 }
 
 const GradeSchema = new Schema<IGrade>({
-  student_id: Types.ObjectId,
-  exam_id: Types.ObjectId,
+  student_id: String,
+  exam_id: String,
   subject: String,
   score: {
     type: Number,

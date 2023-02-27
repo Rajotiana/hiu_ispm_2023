@@ -27,7 +27,7 @@ export const submitGrades: RequestHandler<
     if (exam) {
       await new GradeModel({
         subject: grade.exam_subject,
-        student_id: student.id,
+        student_id: student._id,
         exam_id: grade.exam_code,
         score: grade.score,
       }).save();
