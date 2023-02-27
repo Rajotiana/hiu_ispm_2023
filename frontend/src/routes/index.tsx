@@ -41,11 +41,18 @@ const router = createBrowserRouter([
         ),
       },
       {
-        index: true,
         path: "/orientation",
         element: (
           <PublicRoute>
             <Orientation />
+          </PublicRoute>
+        ),
+      },
+      {
+        path: "/admin",
+        element: (
+          <PublicRoute>
+            <Admin />
           </PublicRoute>
         ),
       },
@@ -56,14 +63,6 @@ const router = createBrowserRouter([
     element: (
       <PublicRoute>
         <StudentsSpaceSidebar />
-      </PublicRoute>
-    ),
-  },
-  {
-    path: "/admin",
-    element: (
-      <PublicRoute>
-        <Admin />
       </PublicRoute>
     ),
   },
