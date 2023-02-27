@@ -6,6 +6,7 @@ import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import Main from "../layout/Main";
 import Home from "../pages/Home";
+import StudentsSpaceSidebar from "../layout/StudentSpaceSidebar";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,14 @@ const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/student-space",
+    element: (
+      <PublicRoute>
+        <StudentsSpaceSidebar />
+      </PublicRoute>
+    ),
   },
 ]);
 
