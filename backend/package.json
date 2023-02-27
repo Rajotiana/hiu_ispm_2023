@@ -11,10 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-    "@types/cors": "^2.8.13",
-=======
->>>>>>> 9bb5b53 (ano ny pips)
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
