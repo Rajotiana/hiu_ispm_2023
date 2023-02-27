@@ -17,7 +17,7 @@ const Question = ({question, onCb}: IProps) => {
   return (
     <div className="p-2">
       <div className='flex-col  rounded-xl p-4 my-1 shadow-md'>
-      <p className='text-neutral-700 p-2 w-full text-xl text-center pb-5'>{question}</p>
+      <p className='text-neutral-700 p-2 w-full text-xl text-center pb-8'>{question}</p>
       <div className="radio flex justify-around items-center py-2">
         <p className='text-base text-indigo-500 p-2'>Not at all</p>
         <Radio
