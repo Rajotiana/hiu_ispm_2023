@@ -7,6 +7,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import axios from "axios";
 import { ChangeEvent, useEffect, useState } from "react";
 import { createWorker } from "tesseract.js";
 
@@ -43,6 +44,20 @@ const Admin = () => {
     }
   };
 
+  const handleButtonClick = async () => {
+    const matricule = data.split("/")[0];
+    const exam_code = data.split("/")[0];
+    const subject = data.split("/")[0];
+    const score = +data.split("/")[0];
+
+    await axios.post("http://localhost:5000/admin/submit-grades", {
+      matricule,
+      exam_code,
+      subject,
+      score,
+    });
+  };
+
   return (
     <Container>
       <Grid spacing={3} container p={3}>
@@ -74,7 +89,7 @@ const Admin = () => {
         <Grid item xs={12}>
           <Card elevation={3}>
             <Stack
-              spacing={5}
+              spacing={2}
               width={400}
               alignItems="flex-start"
               justifyContent="center"
@@ -82,14 +97,24 @@ const Admin = () => {
             >
               <Typography variant="h3">Result :</Typography>
               <Stack direction="row" spacing={2}>
-                <Typography>exam_id : </Typography>
-                <Typography fontWeight="bold">{data.split(" ")[2]}</Typography>
+                <Typography>matricule : </Typography>
+                <Typography fontWeight="bold">{data.split("/")[0]}</Typography>
+              </Stack>
+              <Stack direction="row" spacing={2}>
+                <Typography>exam_code : </Typography>
+                <Typography fontWeight="bold">{data.split("/")[1]}</Typography>
               </Stack>
               <Stack direction="row" spacing={2}>
                 <Typography>subject : </Typography>
-                <Typography fontWeight="bold">{data.split(" ")[6]}</Typography>
+                <Typography fontWeight="bold">{data.split("/")[2]}</Typography>
               </Stack>
-              <Button variant="contained">Validate</Button>
+              <Stack direction="row" spacing={2}>
+                <Typography>score : </Typography>
+                <Typography fontWeight="bold">{data.split("/")[3]}</Typography>
+              </Stack>
+              <Button variant="contained" onClick={() => handleButtonClick()}>
+                Validate
+              </Button>
             </Stack>
           </Card>
         </Grid>
