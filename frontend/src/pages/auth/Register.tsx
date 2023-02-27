@@ -1,17 +1,18 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import LinearProgress from "@mui/material/LinearProgress";
 
 function Copyright(props: any) {
   return (
@@ -29,13 +30,37 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+  const navigate = useNavigate();
+
+  const [isLoading, setLoading] = React.useState(false);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    try {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      setLoading(true);
+      const response = await fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: data.get("firstName"),
+          lastName: data.get("lastName"),
+          email: data.get("email"),
+          matricule: data.get("serialNumber"),
+          password: data.get("password"),
+          sector: data.get("sector"),
+          level: data.get("level"),
+        }),
+      }).then((res) => res.json());
+      console.log(response);
+      setLoading(false);
+      navigate("/student-space");
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
   };
 
   return (
@@ -50,6 +75,9 @@ export default function SignUp() {
             alignItems: "center",
           }}
         >
+          <span className="align-self-end" onClick={() => navigate(-1)}>
+            <ArrowBackIcon />
+          </span>
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
@@ -95,9 +123,30 @@ export default function SignUp() {
                   fullWidth
                   id="searial-number"
                   label="Serial number"
-                  name="serial-number"
+                  name="serialNumber"
                   type="number"
                   autoComplete="Serial number"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="sector"
+                  label="Sector"
+                  name="sector"
+                  autoComplete="Sector"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="level"
+                  label="Level"
+                  name="level"
+                  type="number"
+                  autoComplete="Level"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -118,17 +167,16 @@ export default function SignUp() {
                   name="passwordConfirmation"
                   label="Confirm your password"
                   type="password"
-                  id="password"
+                  id="passwordConfirmation"
                   autoComplete="Password confirmation"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
             </Grid>
+            {isLoading && (
+              <div className="mt-5">
+                <LinearProgress />
+              </div>
+            )}
             <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
               Sign Up
             </Button>
