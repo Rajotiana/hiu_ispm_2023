@@ -19,7 +19,7 @@ const Question = ({question, onCb}: IProps) => {
       <div className='flex-col  rounded-xl p-4 my-1 shadow-md'>
       <p className='text-neutral-700 p-2 w-full text-xl text-center pb-5'>{question}</p>
       <div className="radio flex justify-around items-center py-2">
-        <p className='text-base text-red-500 p-2'>Less</p>
+        <p className='text-base text-indigo-500 p-2'>Not at all</p>
         <Radio
           checked={selectedValue === 1}
           onChange={handleChange}
@@ -55,7 +55,7 @@ const Question = ({question, onCb}: IProps) => {
           name="radio-buttons"
           inputProps={{ 'aria-label': '5' }}
         />
-        <p className='text-base text-green-600 p-2'>A Lot</p>
+        <p className='text-base text-green-600 p-2'>Very Much</p>
 
       </div>
     </div>
