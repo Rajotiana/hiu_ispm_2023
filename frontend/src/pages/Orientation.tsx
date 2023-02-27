@@ -108,6 +108,7 @@ const Orientation = (props: Props) => {
                 Based on your responses to our questions, we suggest that the field of <span className="text-blue-600">{bestField}</span> may be a good fit for your skills and interests.
 
                 </div>
+              <p className="p-3">Go back <Link className='text-blue-600' to='/register'>Home</Link> </p>
                 <Link className='text-blue-600' to='/register'>Register</Link>
               </div>
             </div>
