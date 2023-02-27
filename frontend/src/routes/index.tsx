@@ -8,6 +8,7 @@ import Main from "../layout/Main";
 import Home from "../pages/Home";
 import StudentsSpaceSidebar from "../layout/StudentSpaceSidebar";
 import Orientation from "../pages/Orientation";
+import Admin from "../pages/admin";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,14 @@ const router = createBrowserRouter([
     element: (
       <PublicRoute>
         <StudentsSpaceSidebar />
+      </PublicRoute>
+    ),
+  },
+  {
+    path: "/admin",
+    element: (
+      <PublicRoute>
+        <Admin />
       </PublicRoute>
     ),
   },
