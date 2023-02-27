@@ -13,6 +13,14 @@ const app = express();
 const port = process.env.PORT;
 
 app.use(cors());
+app.use(express.json())
+app.use(express.static('public'))
+
+
+app.get("/courses/:filename",(req:Request,res:Response)=>{
+  if (!req.params.filename) return res.status(400).json({ error: { message: "Filename should be given in params" } });
+  streamMedia(req, res, "video", req.params.filename);
+})
 
 app.use(express.json());
 

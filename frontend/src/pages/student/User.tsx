@@ -4,8 +4,8 @@ type Props = {}
 
 const User = (props: Props) => {
   return (
-    <div>
-      <video src="url"></video>
+    <div className='w-full flex justify-center items-center'>
+      <video src="http://localhost:5000/courses/prisma.mp4" controls></video>
     </div>
   )
 }
