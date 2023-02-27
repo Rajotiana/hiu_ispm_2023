@@ -26,11 +26,11 @@ const Orientation = (props: Props) => {
   const [bestField, setBestField] = useState("");
 
   const matrix = [
-    [1, 3, 5, 4, 2, 4, 1, 3], // Informatic
-    [2, 1, 3, 1, 3, 5, 2, 4], // Biotech
-    [3, 3, 4, 5, 1, 3, 4, 1], // Tertiaire
-    [2, 1, 4, 5, 1, 3, 2, 2], // GIC
-    [2, 1, 2, 2, 4, 5, 1, 1], // Tourism
+    [5, 3, 5, 4, 1, 4, 1, 5], // Informatic
+    [4, 3, 4, 2, 5, 4, 1, 3], // Biotech
+    [3, 4, 4, 3, 1, 4, 3, 3], // Tertiaire
+    [4, 4, 4, 5, 1, 5, 2, 3], // GIC
+    [2, 5, 3, 3, 2, 3, 5, 2], // Tourism
   ];
 
   function setSVs(v: number, i: number) {
@@ -69,7 +69,8 @@ const Orientation = (props: Props) => {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="w-full flex justify-center items-center">
+      <div className="flex flex-col w-full md:w-2/3">
       {!done ? (
         <div className="">
       <div className="w-full text-center">Take a test to know what field suit you the best. </div>
@@ -87,7 +88,7 @@ const Orientation = (props: Props) => {
       ) : (
         <div className="">
           {isLoading ? (
-            <div className="loading">
+            <div className="loading w-full flex items-center justify-center">
               <div className="flex items-center justify-center">
                 <div
                   className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
@@ -100,10 +101,11 @@ const Orientation = (props: Props) => {
               </div>
             </div>
           ) : (
-            <div className="">Resultat, {bestField}</div>
+            <div className="p-2">We recommend you the field {bestField}</div>
           )}
         </div>
       )}
+    </div>
     </div>
   );
 };
