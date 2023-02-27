@@ -74,7 +74,7 @@ const Orientation = (props: Props) => {
       <div className="flex flex-col w-full md:w-2/3">
       {!done ? (
         <div className="">
-      <div className="w-full text-center">Take a test to know what field suit you the best. </div>
+      <div className="w-full text-center mt-5">Take a test to know what field suit you the best. </div>
 
           <div className="">
             {questions.map((question, index) => {
