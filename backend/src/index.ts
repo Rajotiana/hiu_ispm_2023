@@ -6,7 +6,7 @@ import cors from "cors";
 import adminRouter from "./routes/admin";
 import studentRouter from "./routes/student";
 import apiRouter from "./routes/routeAuth";
-
+import { streamMedia } from "./utils/streamFile";
 dotenv.config();
 
 const app = express();
@@ -23,6 +23,7 @@ app.get("/courses/:filename",(req:Request,res:Response)=>{
 })
 
 app.use(express.json());
+
 
 app.use("/admin", adminRouter);
 app.use("/student", studentRouter);
