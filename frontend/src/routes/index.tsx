@@ -7,6 +7,7 @@ import Register from "../pages/auth/Register";
 import Main from "../layout/Main";
 import Home from "../pages/Home";
 import StudentsSpaceSidebar from "../layout/StudentSpaceSidebar";
+import Orientation from "../pages/Orientation";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,15 @@ const router = createBrowserRouter([
         element: (
           <PublicRoute>
             <Home />
+          </PublicRoute>
+        ),
+      },
+      {
+        index: true,
+        path: "/orientation",
+        element: (
+          <PublicRoute>
+            <Orientation />
           </PublicRoute>
         ),
       },
