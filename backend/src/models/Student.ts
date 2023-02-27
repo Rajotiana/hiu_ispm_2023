@@ -5,7 +5,7 @@ interface IStudent {
   first_name: string;
   last_name: string;
   level: number;
-  subject: string;
+  sector: string;
 }
 
 const StudentSchema = new Schema<IStudent>({
@@ -13,7 +13,7 @@ const StudentSchema = new Schema<IStudent>({
   first_name: String,
   last_name: String,
   level: String,
-  subject: String,
+  sector: String,
 });
 
 const StudentModel = model("Student", StudentSchema);
