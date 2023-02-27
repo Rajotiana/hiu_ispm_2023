@@ -46,9 +46,9 @@ const Admin = () => {
 
   const handleButtonClick = async () => {
     const matricule = data.split("/")[0];
-    const exam_code = data.split("/")[0];
-    const subject = data.split("/")[0];
-    const score = +data.split("/")[0];
+    const exam_code = data.split("/")[1];
+    const subject = data.split("/")[2];
+    const score = +data.split("/")[3];
 
     await axios.post("http://localhost:5000/admin/submit-grades", {
       matricule,

@@ -25,12 +25,12 @@ export const submitGrades: RequestHandler<
     });
 
     if (exam) {
-      new GradeModel({
+      await new GradeModel({
         subject: grade.exam_subject,
         student_id: student.id,
         exam_id: grade.exam_code,
         score: grade.score,
-      });
+      }).save();
 
       return res.end();
     } else {
