@@ -5,7 +5,7 @@ import { createWorker } from "tesseract.js";
 const Admin = () => {
   const [image, setImage] = useState<null | File>(null);
 
-  const [data, setData] = useState<string>("");
+  const [dataa, setData] = useState<string>("");
 
   useEffect(() => {
     (async () => {
@@ -56,7 +56,7 @@ const Admin = () => {
             onChange={handleInputFileChange}
           />
         </Button>
-        <Card>{data}</Card>
+        <Card>{dataa}</Card>
       </Stack>
     </Container>
   );
