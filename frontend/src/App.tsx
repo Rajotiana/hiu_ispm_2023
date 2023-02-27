@@ -1,5 +1,6 @@
 import { ThemeProvider, createTheme } from "@mui/material";
 import { RouterProvider } from "react-router-dom";
+import './index.css'
 
 import router from "./routes";
 
